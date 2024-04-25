@@ -6,18 +6,36 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          'Miteinander',
-          style: TextStyle(
-            color: Colors.black,
-            fontSize: 18,
-            fontWeight: FontWeight.bold
-          ),
-        ),
-        centerTitle: true,
-        backgroundColor: Colors.blue
+      appBar: _appBar(),
+      body: Column(
+        children: [
+
+        ],
       ),
+      drawer: Drawer(
+
+      ),
+    );
+  }
+
+  AppBar _appBar() {
+    return AppBar(
+      title: Text(
+        'Miteinander',
+        style: TextStyle(
+          color: Colors.black,
+          fontSize: 18,
+          fontWeight: FontWeight.bold
+        ),
+      ),
+      centerTitle: true,
+      backgroundColor: Colors.blue,
+      actions: [
+        ElevatedButton(onPressed: () {
+
+        }, 
+        child: Text('A'))
+      ],
     );
   }
 }
