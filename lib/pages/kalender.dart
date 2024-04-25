@@ -2,8 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
 
-class Kalender extends StatelessWidget {
+class Kalender extends StatefulWidget {
   const Kalender({super.key});
+
+  @override
+  State<Kalender> createState() => _KalenderState();
+}
+
+class _KalenderState extends State<Kalender> {
+  var calenderView = "day";
 
   @override
   Widget build(BuildContext) {
@@ -11,9 +18,48 @@ class Kalender extends StatelessWidget {
       appBar: _appBar(),
       body: Column(
         children: [
-          
+          Row(
+            children: [
+              ElevatedButton(onPressed: () {
+                setState(() {
+                calenderView = "day";
+                });
+              }, 
+              child: Text('Day')),
+              ElevatedButton(onPressed: () {
+                setState(() {
+                calenderView = "week";
+                });
+              }, 
+              child: Text('Week')),
+              ElevatedButton(onPressed: () {
+                setState(() {
+                  calenderView = "month";
+                });
+
+              }, 
+              child: Text('Month')),
+            ],
+          ),
+          Container(
+            child:
+              switch (calenderView) {
+                "week" =>
+                  SfCalendar(
+                    view: CalendarView.week,
+                  ),
+                "month" =>
+                  SfCalendar(
+                    view: CalendarView.day,
+                  ),
+                _ =>
+                  SfCalendar(
+                    view: CalendarView.day,
+                  ),
+              }
+          ),
         ],
-      ),
+      )
     );
   }
 
