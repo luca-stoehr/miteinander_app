@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -13,7 +14,7 @@ class HomePage extends StatelessWidget {
         ],
       ),
       drawer: Drawer(
-
+        
       ),
     );
   }
@@ -31,10 +32,17 @@ class HomePage extends StatelessWidget {
       centerTitle: true,
       backgroundColor: Colors.blue,
       actions: [
-        ElevatedButton(onPressed: () {
+        ElevatedButton(
+          onPressed: () {
 
-        }, 
-        child: Text('A'))
+          }, 
+          child: Text('A'),
+          style: ButtonStyle(
+            shape: MaterialStateProperty.all(
+              CircleBorder()
+            )
+          ),
+        )
       ],
     );
   }
