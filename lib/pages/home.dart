@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:miteinander_app/pages/kalender.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -14,7 +15,63 @@ class HomePage extends StatelessWidget {
         ],
       ),
       drawer: Drawer(
-        
+        child: ListView(
+          children: [
+            SizedBox(
+              height: 100,
+              child: const DrawerHeader(
+                decoration: BoxDecoration(
+                  color: Colors.blueGrey
+                ),
+                child: Text(
+                  'Räume',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold
+                  ),
+                )
+                
+              ),
+            ),
+            ListTile(
+              title: const Text('Kalender'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const Kalender())
+                );
+                //Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              title: const Text('Buchclub'),
+              onTap: () {
+
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              title: const Text('Flimmerkiste'),
+              onTap: () {
+
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              title: const Text('Daddeln'),
+              onTap: () {
+
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              title: const Text('Sport'),
+              onTap: () {
+
+                Navigator.pop(context);
+              },
+            )
+          ]
+        )
       ),
     );
   }
