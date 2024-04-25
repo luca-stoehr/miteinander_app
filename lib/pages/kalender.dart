@@ -36,31 +36,32 @@ class _KalenderState extends State<Kalender> {
                 setState(() {
                   calenderView = "month";
                 });
-
               }, 
               child: Text('Month')),
             ],
           ),
           Container(
-            child:
-              switch (calenderView) {
-                "week" =>
-                  SfCalendar(
-                    view: CalendarView.week,
-                  ),
-                "month" =>
-                  SfCalendar(
-                    view: CalendarView.day,
-                  ),
-                _ =>
-                  SfCalendar(
-                    view: CalendarView.day,
-                  ),
-              }
+            child: SfCalendar(
+              view: _calViewMode(),
+              firstDayOfWeek: 1,              
+            )
           ),
         ],
       )
     );
+  }
+
+  dynamic _calViewMode() {
+    //problems with switch case not resolved
+    
+    switch (calenderView) {
+      case "week":
+        return CalendarView.week;
+      case "month":
+        return CalendarView.month;
+      default:
+        return CalendarView.week;
+    }
   }
 
   AppBar _appBar() {

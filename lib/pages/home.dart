@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:miteinander_app/pages/buchclub.dart';
 import 'package:miteinander_app/pages/kalender.dart';
 
 class HomePage extends StatelessWidget {
@@ -35,18 +36,21 @@ class HomePage extends StatelessWidget {
             ListTile(
               title: const Text('Kalender'),
               onTap: () {
+                Navigator.pop(context);
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => const Kalender())
                 );
-                //Navigator.pop(context);
               },
             ),
             ListTile(
               title: const Text('Buchclub'),
               onTap: () {
-
                 Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const Buchclub())
+                );
               },
             ),
             ListTile(
