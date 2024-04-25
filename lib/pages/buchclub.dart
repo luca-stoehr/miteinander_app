@@ -1,11 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:sprintf/sprintf.dart';
 
 class Buchclub extends StatelessWidget{
   Buchclub({super.key});
-  var listOfMembers = ["you", "test"];
+  List<String> listOfMembers = ["you", "test"];
 
   @override
   Widget build(BuildContext context) {
@@ -44,9 +43,9 @@ class Buchclub extends StatelessWidget{
     return Drawer(
       child: ListView(
         children: [
-          SizedBox(
+          const SizedBox(
             height: 100,
-            child: const DrawerHeader(
+            child: DrawerHeader(
               decoration: BoxDecoration(
                 color: Colors.blueGrey
               ),
@@ -55,8 +54,7 @@ class Buchclub extends StatelessWidget{
                 style: TextStyle(
                   fontWeight: FontWeight.bold
                 ),
-              )
-              
+              )  
             ),
           ),
           for (var name in listOfMembers)
@@ -77,41 +75,60 @@ class Buchclub extends StatelessWidget{
     );
   }
 
-  Container _nightstand() {
-    return Container(
-              height: 200,
-              child: Row(
-                children: [
-                  //implement Nachttisch here
-                ],
-              ),
-            );
+  SizedBox _nightstand() {
+    return SizedBox(
+      height: 200,
+      child: ListView.separated(
+        scrollDirection: Axis.horizontal,
+        itemCount: listOfMembers.length,
+        itemBuilder: (BuildContext context, int index) {
+          return Container(
+            width: 200,
+            decoration: const BoxDecoration(
+              color: Color.fromARGB(255, 81, 121, 154),
+              borderRadius: BorderRadius.all(Radius.circular(15))
+            ),
+            child: Center(child: Text('Nachttisch von ${listOfMembers[index]}')),
+          );
+        },
+        separatorBuilder: (BuildContext context, int index) => const SizedBox(width: 10,),
+      ),
+    );
   }
 
-  Container _favorites() {
-    return Container(
-              height: 200,
-              child: Row(
-                children: [
-                  //for (var name in listOfMembers)
-                                            // implement a top three list here
-                ]
-              ),
-            );
+  SizedBox _favorites() {
+    return SizedBox(
+      height: 200,
+      child: ListView.separated(
+        scrollDirection: Axis.horizontal,
+        itemCount: listOfMembers.length,
+        itemBuilder: (BuildContext context, int index) {
+          return Container(
+            width: 200,
+            decoration: const BoxDecoration(
+              color: Colors.amber,
+              borderRadius: BorderRadius.all(Radius.circular(15))
+            ),
+            child: Center(child: Text('Top 3 von ${listOfMembers[index]}')),
+          );
+        },
+        separatorBuilder: (BuildContext context, int index) => const SizedBox(width: 10,),
+      ),
+    );
   }
 
   Container _theProject() {
     return Container(
-              height: 200,
-              child: ListView(
-                scrollDirection: Axis.horizontal,
-                children: [
-                  Container(
-                    
-                  ),
-                ]
-              ),
-            );
+      height: 200,
+      child: ListView(
+        scrollDirection: Axis.horizontal,
+        children: [
+          Container(
+            
+          ),
+        ]
+      ),
+    );
   }
 
   AppBar _appBar() {
